@@ -2,7 +2,7 @@ name: Train Perceptron (GPU)
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
 
 jobs:
   train:
