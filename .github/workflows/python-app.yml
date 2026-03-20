@@ -6,7 +6,6 @@ on:
 
 jobs:
   train:
-    environment: production
     runs-on: self-hosted
 
     steps:
