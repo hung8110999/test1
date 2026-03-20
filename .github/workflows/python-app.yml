@@ -1,0 +1,31 @@
+name: Train Perceptron (GPU)
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  train:
+    environment: production
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check GPU
+        run: nvidia-smi
+        
+      - name: Show Python in Conda env
+        run: |
+          /home/hung.nguyen.e/.conda/envs/octree-gs2/bin/python -V
+
+      - name: Train model
+        run: |
+          /home/hung.nguyen.e/.conda/envs/octree-gs2/bin/python train.py
+
+      - name: Upload model artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: perceptron-model
+          path: perceptron_gpu1.pt
